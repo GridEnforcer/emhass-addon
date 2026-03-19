@@ -72,4 +72,4 @@ RUN uv venv && . .venv/bin/activate
 RUN uv pip install --verbose .
 RUN uv lock
 
-ENTRYPOINT [ "uv", "run", "--frozen", "gunicorn", "emhass.web_server:create_app()" ]
+ENTRYPOINT [ "uv", "run", "--frozen", "gunicorn", "emhass.web_server:app", "-k", "uvicorn.workers.UvicornWorker", "-b", "0.0.0.0:5000" ]
