@@ -1,0 +1,37 @@
+configuration:
+  server_ip:
+    name: Server IP
+    description: Binds the webserver to an IP address (default 0.0.0.0)
+  hass_url:
+    name: Home Assistant URL
+    description: Leave empty when using the Supervisor. Otherwise enter your HA URL.
+  long_lived_token:
+    name: Long-Lived Access Token
+    description: Leave empty when using the Supervisor.
+  data_path:
+    name: Data path
+    description: Folder where EMHASS stores its data.
+  config_path:
+    name: Config path
+    description: Path to the EMHASS configuration file.
+  time_zone:
+    name: Time zone
+    description: Automatically set by HA Supervisor.
+  Latitude:
+    name: Latitude
+    description: Automatically set by HA Supervisor.
+  Longitude:
+    name: Longitude
+    description: Automatically set by HA Supervisor.
+  Altitude:
+    name: Altitude
+    description: Automatically set by HA Supervisor.
+  solcast_api_key:
+    name: Solcast API key
+    description: API key for Solcast weather forecasts.
+  solcast_rooftop_id:
+    name: Solcast rooftop ID
+    description: Rooftop ID for Solcast.
+  solar_forecast_kwp:
+    name: PV peak power (kW)
+    description: PV peak installed power for solar.forecast API.

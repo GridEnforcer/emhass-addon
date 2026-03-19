@@ -1,0 +1,39 @@
+name: EMHASS (GridEnforcer)
+description: "EMHASS with multi-battery support — forked for GridEnforcer"
+url: https://github.com/GridEnforcer/emhass
+version: 0.13.5-ge1
+slug: emhass-gridenforcer
+arch:
+  - aarch64
+  - amd64
+ports:
+  5000/tcp: 5000
+ports_description:
+  5000/tcp: Web interface and API
+webui: http://[HOST]:[PORT:5000]
+map:
+  - share:rw
+  - type: addon_config
+    path: /config
+    read_only: False
+init: false
+hassio_role: default
+homeassistant_api: true
+ingress: true
+ingress_port: 5000
+ingress_stream: true
+panel_icon: mdi:home-lightning-bolt-outline
+panel_title: EMHASS
+schema:
+  hass_url: "str?"
+  long_lived_token: "password?"
+  data_path: "list(default|/config|/data|/share|/share/emhass)?"
+  config_path: "list(default|/config/config.json|/share/config.json|/share/emhass/config.json)?"
+  time_zone: "match((\\w+)?(\\/)(\\w+))?"
+  Latitude: "float?"
+  Longitude: "float?"
+  Altitude: "float?"
+  solcast_api_key: "password?"
+  solcast_rooftop_id: "str?"
+  solar_forecast_kwp: "float?"
+  server_ip: "list(0.0.0.0|127.0.0.1)?"
