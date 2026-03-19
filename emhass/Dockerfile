@@ -53,6 +53,11 @@ RUN mkdir -p /data/ /share/emhass/
 # Pre-generated data
 RUN cp /app/data/opt_res_latest.csv /data/ && cp /app/data/long_train_data.pkl /data/
 
+# GridEnforcer default config (enables PV, battery, hybrid inverter, list-based forecasts)
+# This file lives in the gridenforcer_emhass plugin package and is copied here at build time.
+# CONFIG_PATH env var tells EMHASS web_server where to find it.
+COPY config.json /share/config.json
+
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
 
