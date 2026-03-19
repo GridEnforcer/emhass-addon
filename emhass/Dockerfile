@@ -38,7 +38,7 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/usr/local/
 
 # Clone our fork
 ARG EMHASS_REPO=https://github.com/GridEnforcer/emhass.git
-ARG EMHASS_BRANCH=feature/multiple-batteries
+ARG EMHASS_BRANCH=feature/multiple-batteries-v0.16.2
 RUN git clone --depth 1 --branch ${EMHASS_BRANCH} ${EMHASS_REPO} /app
 
 # Install python version from .python-version
