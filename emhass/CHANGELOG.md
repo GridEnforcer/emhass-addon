@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.2-ge4
+
+- Fix mixed timezone bug in EMHASS
+
 ## 0.16.2-ge3
 
 - Fix IndexError when soc_init/soc_final list is shorter than num_batteries

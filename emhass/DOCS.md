@@ -5,6 +5,8 @@ EMHASS with multi-battery support for GridEnforcer.
 Based on the `feature/multiple-batteries` branch of
 [GridEnforcer/emhass](https://github.com/GridEnforcer/emhass).
 
+Upgraded to v0.16.2
+
 ## Additional features over upstream v0.13.5
 
 - **Per-battery SOC init/final** — each battery can start at a different state of charge
