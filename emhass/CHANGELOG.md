@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.2-ge8
+
+- Diagnostic: log `battery_is_dc_coupled_list` / charge-efficiency-list / min-max-soc-list presence in `plant_conf` before and after `_init_battery_param_lists()` broadcast. Investigating whether runtimeparams `_list` keys reach the solver or are dropped by `treat_runtimeparams` for lack of `associations.csv` entries.
+
 ## 0.16.2-ge7
 
 - HTML overview now renders per-battery friendly names (`battery_display_name_list`) instead of raw `P_batt0` / `SOC_opt0` labels, and plots per-battery SOC in multi-battery setups
