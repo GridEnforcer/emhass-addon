@@ -1,7 +1,7 @@
 name: EMHASS (GridEnforcer)
 description: "EMHASS with multi-battery support — forked for GridEnforcer"
 url: https://github.com/GridEnforcer/emhass
-version: 0.16.2-ge5
+version: 0.16.2-ge6
 slug: emhass-gridenforcer
 arch:
   - aarch64

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.16.2-ge6
+
+- Backport upstream DST-boundary fixes (forecast date range + `num_timesteps` override) to prevent CVXPY shape mismatches on DST transitions
+- Backport upstream continual-publish timeout fix (Quart background task instead of raw thread)
+
 ## 0.16.2-ge5
 
 - Per-battery cycle-cost weights (`weight_battery_charge_list` / `weight_battery_discharge_list`); scalar config remains backwards compatible
