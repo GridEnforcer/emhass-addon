@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.2-ge5
+
+- Per-battery cycle-cost weights (`weight_battery_charge_list` / `weight_battery_discharge_list`); scalar config remains backwards compatible
+
 ## 0.16.2-ge4
 
 - Fix mixed timezone bug in EMHASS
