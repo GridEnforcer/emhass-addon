@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.2-ge9
+
+- Route per-battery `_list` runtimeparams (`battery_is_dc_coupled_list`, charge/discharge efficiency, min/max/target SOC, charge/discharge power max, nominal capacity, cycle weights, nocharge_from_grid, nodischarge_to_grid) into `plant_conf` / `optim_conf` via new `associations.csv` entries. Without these, EMHASS silently dropped every `_list` key and fell back to scalar broadcast — so per-battery values never reached the solver, and AC-coupled EV charger discharge was planned through the hybrid inverter's DC bus. Also drops the ge8 diagnostic log.
+
 ## 0.16.2-ge8
 
 - Diagnostic: log `battery_is_dc_coupled_list` / charge-efficiency-list / min-max-soc-list presence in `plant_conf` before and after `_init_battery_param_lists()` broadcast. Investigating whether runtimeparams `_list` keys reach the solver or are dropped by `treat_runtimeparams` for lack of `associations.csv` entries.
