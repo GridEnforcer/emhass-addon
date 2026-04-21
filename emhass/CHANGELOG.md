@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.2-ge7
+
+- HTML overview now renders per-battery friendly names (`battery_display_name_list`) instead of raw `P_batt0` / `SOC_opt0` labels, and plots per-battery SOC in multi-battery setups
+
 ## 0.16.2-ge6
 
 - Backport upstream DST-boundary fixes (forecast date range + `num_timesteps` override) to prevent CVXPY shape mismatches on DST transitions
