@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.2-ge10
+
+- WebSocket statistics fetch (`RetrieveHass.get_data_websocket`) now picks the period adaptively from the requested window: `period="5minute"` for windows ≤10 days, `period="hour"` for longer windows. Hourly long-term statistics (LTSS) are retained for years on a default HA install, so this unlocks long ML training windows (`ml_historic_days > recorder.purge_keep_days`) without bloating the recorder DB. Plus `treat_runtimeparams` honors `use_websocket` from runtimeparams, letting callers opt into the WebSocket+statistics path per-call without YAML config changes. See gridenforcer_core-9nz.
+
 ## 0.16.2-ge9
 
 - Route per-battery `_list` runtimeparams (`battery_is_dc_coupled_list`, charge/discharge efficiency, min/max/target SOC, charge/discharge power max, nominal capacity, cycle weights, nocharge_from_grid, nodischarge_to_grid) into `plant_conf` / `optim_conf` via new `associations.csv` entries. Without these, EMHASS silently dropped every `_list` key and fell back to scalar broadcast — so per-battery values never reached the solver, and AC-coupled EV charger discharge was planned through the hybrid inverter's DC bus. Also drops the ge8 diagnostic log.
