@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.16.2-ge11
+
+- `treat_runtimeparams` clamps each `soc_init` / `soc_final` list element to its OWN battery's min/max (`battery_{minimum,maximum}_state_of_charge_list[b]`) instead of the scalar `battery_minimum_state_of_charge` (battery 0). Field 2026-05-28: a V2G EV at 18 % SoC (min relaxed to 0.18) had its `soc_init` clamped up to the house battery's 0.25 min, so the EV's planned SOC trajectory started at 25 % instead of 18 % and the dashboard EV curve was misaligned. Single-battery scalar path unchanged. See gridenforcer_core-nrs follow-up.
+
 ## 0.16.2-ge10
 
 - WebSocket statistics fetch (`RetrieveHass.get_data_websocket`) now picks the period adaptively from the requested window: `period="5minute"` for windows ≤10 days, `period="hour"` for longer windows. Hourly long-term statistics (LTSS) are retained for years on a default HA install, so this unlocks long ML training windows (`ml_historic_days > recorder.purge_keep_days`) without bloating the recorder DB. Plus `treat_runtimeparams` honors `use_websocket` from runtimeparams, letting callers opt into the WebSocket+statistics path per-call without YAML config changes. See gridenforcer_core-9nz.
