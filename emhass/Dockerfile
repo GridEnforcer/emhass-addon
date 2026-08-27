@@ -39,7 +39,7 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR="/usr/local/
 # Clone our fork (bump CACHE_BUST to force fresh clone)
 ARG EMHASS_REPO=https://github.com/GridEnforcer/emhass.git
 ARG EMHASS_BRANCH=feature/ge-v0.18.1
-ARG CACHE_BUST=ge13
+ARG CACHE_BUST=ge14
 RUN git clone --depth 1 --branch ${EMHASS_BRANCH} ${EMHASS_REPO} /app
 
 # Install python version from .python-version

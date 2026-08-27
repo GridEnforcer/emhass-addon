@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.18.1-ge14 (2026-08-27)
+
+- Rebuild for the terminal salvage-value feature (GridEnforcer/emhass `026c012b` on `feature/ge-v0.18.1`, bead ge-zues): per-battery `battery_salvage_price` runtime param — salvage batteries are excluded from the terminal soc_final pin and their end-of-horizon stored energy is priced in the objective. Field-validated on customer #1 2026-08-26/27.
+
+
 ## 0.18.1-ge13 (unreleased)
 
 - **Rebuild pulls the battery startup penalty (ge-jeh)** from `feature/ge-v0.18.1`: new `set_battery_startup_penalty` (scalar/per-battery, default 0.0 = off) + `battery_initial_active` runtime param. Opt-in — plans are unchanged until the plugin sends a nonzero penalty. CACHE_BUST ge12 → ge13.
