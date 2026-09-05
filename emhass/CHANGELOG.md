@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.18.1-ge16 (2026-09-05)
+
+- **Rebuild: ML load forecaster copes with a young sensor (GridEnforcer/emhass PR #2, bead ge-jfe7).** `MLForecaster.fit` drops the leading NaN gap that the statistics path returns for a sensor younger than `historic_days_to_retrieve` (it failed with `y has missing values` on every retry before), and refuses — in sensor terms — to train when fewer than 2 × `num_lags` training rows remain after the test window, so a model worse than a constant never reaches the planner. Field-green on customer #1 2026-09-05 via hot-patch. No config change. CACHE_BUST ge15 → ge16.
+
 ## 0.18.1-ge15 (2026-09-05)
 
 - **Rebuild: `battery_salvage_price` finally reaches the LP (GridEnforcer/emhass PR #1, `739857b3` on `feature/ge-v0.18.1`, bead ge-mo3z).** ge14 shipped the salvage-value feature but the runtime param was missing from `associations.csv`, so the server silently dropped it on every call and kept pinning the terminal SoC to `battery_target_state_of_charge` — plans charged only enough to drain to the target instead of filling into cheap PV. No config change; the plugin has been sending the key since ge14. Field-green on the dev box 2026-09-05 (salvage price in `optim_conf`, plan tail at 95 % instead of 20 %). Also declares the three fork battery params in `param_definitions.json`. CACHE_BUST ge14 → ge15.
