@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.18.1-ge15 (2026-09-05)
+
+- **Rebuild: `battery_salvage_price` finally reaches the LP (GridEnforcer/emhass PR #1, `739857b3` on `feature/ge-v0.18.1`, bead ge-mo3z).** ge14 shipped the salvage-value feature but the runtime param was missing from `associations.csv`, so the server silently dropped it on every call and kept pinning the terminal SoC to `battery_target_state_of_charge` — plans charged only enough to drain to the target instead of filling into cheap PV. No config change; the plugin has been sending the key since ge14. Field-green on the dev box 2026-09-05 (salvage price in `optim_conf`, plan tail at 95 % instead of 20 %). Also declares the three fork battery params in `param_definitions.json`. CACHE_BUST ge14 → ge15.
+
 ## 0.16.2-ge11
 
 - `treat_runtimeparams` clamps each `soc_init` / `soc_final` list element to its OWN battery's min/max (`battery_{minimum,maximum}_state_of_charge_list[b]`) instead of the scalar `battery_minimum_state_of_charge` (battery 0). Field 2026-05-28: a V2G EV at 18 % SoC (min relaxed to 0.18) had its `soc_init` clamped up to the house battery's 0.25 min, so the EV's planned SOC trajectory started at 25 % instead of 18 % and the dashboard EV curve was misaligned. Single-battery scalar path unchanged. See gridenforcer_core-nrs follow-up.
