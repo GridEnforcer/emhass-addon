@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.18.1-ge17 (2026-09-08)
+
+- **Rebuild: fit metrics + seasonal-naive baseline served at `GET /api/v1/ml-fit/<model_type>` (GridEnforcer/emhass PR #3, bead ge-56k0).** The plugin's ML skill gate reads this after every fit and serves the ML load forecast only when it beats "same time yesterday"; on an add-on without the endpoint the plugin keeps the naive forecast in front. No config change. Field-green on customer #1 2026-09-07 via hot-patch. CACHE_BUST ge16 → ge17.
+
 ## 0.18.1-ge16 (2026-09-05)
 
 - **Rebuild: ML load forecaster copes with a young sensor (GridEnforcer/emhass PR #2, bead ge-jfe7).** `MLForecaster.fit` drops the leading NaN gap that the statistics path returns for a sensor younger than `historic_days_to_retrieve` (it failed with `y has missing values` on every retry before), and refuses — in sensor terms — to train when fewer than 2 × `num_lags` training rows remain after the test window, so a model worse than a constant never reaches the planner. Field-green on customer #1 2026-09-05 via hot-patch. No config change. CACHE_BUST ge15 → ge16.
