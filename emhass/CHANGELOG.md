@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.18.1-ge18 (2026-09-25)
+
+- **Rebuild: the demand charge can price clock-hour averages and the billing period's top-k (GridEnforcer/emhass PR #4, bead ge-g65f / umbrella ge-qzno).** New structural options `capacity_charge_hourly_average` and `capacity_charge_top_k`, per-call `current_period_peaks` / `current_hour_imported_wh` / `current_hour_elapsed_h`, and `planned_peak_w` / `planned_topk_avg_w` / `planned_hour0_w` result columns, so Core's effect-tariff path sends tariff facts instead of hard per-step limits and the LP decides when raising the month's peak is cheaper than serving the energy another way. Default off is byte-identical. Retires the hot-patch that has run on the car-dealer add-on since 2026-09-23. CACHE_BUST ge17 → ge18.
+
 ## 0.18.1-ge17 (2026-09-08)
 
 - **Rebuild: fit metrics + seasonal-naive baseline served at `GET /api/v1/ml-fit/<model_type>` (GridEnforcer/emhass PR #3, bead ge-56k0).** The plugin's ML skill gate reads this after every fit and serves the ML load forecast only when it beats "same time yesterday"; on an add-on without the endpoint the plugin keeps the naive forecast in front. No config change. Field-green on customer #1 2026-09-07 via hot-patch. CACHE_BUST ge16 → ge17.
